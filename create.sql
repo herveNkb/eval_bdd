@@ -17,6 +17,12 @@ GRANT SELECT ON cinema_totoro.* TO 'user_cinema'@'localhost';
 -- Recharge MySQL pour prendre en compte les modifications
 FLUSH PRIVILEGES;
 
+/*
+ Se connecter à la BDD avec l'utilisateur admin_cinema
+puis sélectionner la base de données avec la requête suivante :
+ */
+USE cinema_totoro;
+
 -- Création des tables
 -- Table user
 CREATE TABLE IF NOT EXISTS user (
@@ -28,3 +34,66 @@ CREATE TABLE IF NOT EXISTS user (
     last_name VARCHAR(100) NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Table cinema_complex
+CREATE TABLE IF NOT EXISTS cinema_complex (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    zip_code INT NOT NULL,
+    city VARCHAR(255) NOT NULL,
+    phone_number INT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Table cinema_rooms
+CREATE TABLE IF NOT EXISTS cinema_rooms (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    hall_number INT NOT NULL,
+    number_of_places INT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Table film_show
+CREATE TABLE IF NOT EXISTS film_show (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    date DATETIME NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Table movie
+CREATE TABLE IF NOT EXISTS movie (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    synopsis LONGTEXT NOT NULL,
+    movie_type VARCHAR(100) NOT NULL,
+    duration VARCHAR(25) NOT NULL,
+    director VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Table booking
+CREATE TABLE IF NOT EXISTS booking (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    booking_date DATETIME NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Table customer
+CREATE TABLE IF NOT EXISTS customer (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    first_name_customer VARCHAR(255) NOT NULL,
+    last_name_customer VARCHAR(255) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Table price_list
+CREATE TABLE IF NOT EXISTS price_list (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    price INT NOT NULL,
+    price_type VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Table payment
+CREATE TABLE IF NOT EXISTS payment (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    payment_type VARCHAR(100) NOT NULL,
+    payment_method VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
