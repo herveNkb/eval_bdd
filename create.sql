@@ -96,4 +96,21 @@ CREATE TABLE IF NOT EXISTS payment (
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- Création des clés étrangères (relation)
+-- Table cinema_complex vers la table user (one to many)
+ALTER TABLE cinema_complex ADD CONSTRAINT FK_cinema_complex_user_id FOREIGN KEY (id) REFERENCES user(id);
+-- création d'une table associative reliant la table cinema_complex et la table booking (many to many)
+CREATE TABLE IF NOT EXISTS cinema_complex_booking (
+    cinema_complex_id INT UNSIGNED NOT NULL,
+    booking_id INT UNSIGNED NOT NULL,
+    PRIMARY KEY (cinema_complex_id, booking_id),
+    CONSTRAINT FK_cinema_complex_booking_cinema_complex_id FOREIGN KEY (cinema_complex_id) REFERENCES cinema_complex(id),
+    CONSTRAINT FK_cinema_complex_booking_booking_id FOREIGN KEY (booking_id) REFERENCES booking(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+
+
+
 
