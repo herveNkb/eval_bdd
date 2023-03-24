@@ -108,7 +108,6 @@ CREATE TABLE IF NOT EXISTS price_list
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
-
 -- Table payment
 CREATE TABLE IF NOT EXISTS payment
 (
@@ -354,12 +353,7 @@ INSERT INTO payment (id, payment_type) VALUES
         (2, 'Espèces'),
         (3, 'Chèque');
 
-
-
-
-
-
-
-
-
-
+/*
+Ligne de commande pour exporter la base de données compléte :
+mysqldump -u admin_cinema -p cinema_totoro > cinema_totoro_backup.sql
+*/
