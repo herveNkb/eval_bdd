@@ -59,8 +59,8 @@ CREATE TABLE IF NOT EXISTS cinema_rooms
 -- Table film_show
 CREATE TABLE IF NOT EXISTS film_show
 (
-    id   INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    date DATETIME     NOT NULL,
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    date DATETIME NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS customer
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     first_name_customer VARCHAR(255) NOT NULL,
     last_name_customer  VARCHAR(255) NOT NULL,
-    date_of_birth       DATE         NOT NULL,
+    date_of_birth DATE NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS customer
 CREATE TABLE IF NOT EXISTS price_list
 (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    price FLOAT  NOT NULL,
+    price FLOAT NOT NULL,
     price_type VARCHAR(100) NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE = InnoDB
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS price_list
 CREATE TABLE IF NOT EXISTS payment
 (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    payment_type   VARCHAR(100) NOT NULL,
+    payment_type VARCHAR(100) NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -139,10 +139,10 @@ ALTER TABLE cinema_rooms
 -- Table cinema_rooms vers la table film_show (one to many)
 ALTER TABLE cinema_rooms
     ADD CONSTRAINT FK_cinema_rooms_film_show_id FOREIGN KEY (id) REFERENCES film_show (id);
--- Table movie vers la table film_show (one to many)
+-- Table movie vers la table film_show (many to one)
 ALTER TABLE movie
     ADD CONSTRAINT FK_movie_film_show_id FOREIGN KEY (id) REFERENCES film_show (id);
--- Table booking vers la table film_show (many to one)
+-- Table booking vers la table film_show (one to many)
 ALTER TABLE booking
     ADD CONSTRAINT FK_booking_film_show_id FOREIGN KEY (id) REFERENCES film_show (id);
 -- création d'une table associative reliant la table booking et la table customer (many to many)
