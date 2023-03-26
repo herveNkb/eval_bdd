@@ -179,7 +179,7 @@ CREATE TABLE IF NOT EXISTS price_list_payment
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
 
--- Insertion des données fictives dans les tables
+-- Insertion des données fictives dans les tables :
 -- Table user
 INSERT INTO user (id, email, password, role, first_name, last_name) VALUES
        (1, 'gbraganza0@freewebs.com', '$2y$10$ZzPYmLAS/.pbjx7kidD25OEIkCmB62rVdRvD4vAV7oL.IHv4L.eeC', 'ROLE_ADMIN', 'Sélène','Braganza'),
@@ -193,12 +193,6 @@ INSERT INTO cinema_complex (id, name, address, zip_code, city, phone_number) VAL
         (2, 'Totoro complex', '69 ave Jean Jaures', '67002', 'Barr', '05376490'),
         (3, 'Totoro écran blanc', '20 Village Green Place', '25236', 'Anteuil', '0390768225'),
         (4, 'Totoro 7eme art', '247 rue du ciel', '30758', 'Alès', '0412549635');
--- Table cinema_rooms
-INSERT INTO cinema_rooms (id, hall_number, number_of_places) VALUES
-        (1, 1, 50),
-        (2, 2, 70),
-        (3, 3, 80),
-        (4, 1, 110);
 -- Table film_show
 INSERT INTO film_show (id, date) VALUES
         (1, '2023-02-02 06:23:20'),
@@ -221,7 +215,12 @@ INSERT INTO film_show (id, date) VALUES
         (18, '2022-06-15 17:58:38'),
         (19, '2022-07-17 07:34:53'),
         (20, '2022-12-24 00:49:23');
-
+-- Table cinema_rooms
+INSERT INTO cinema_rooms (id, hall_number, number_of_places) VALUES
+        (1, 1, 50),
+        (2, 2, 70),
+        (3, 3, 80),
+        (4, 1, 110);
 -- Table movie
 INSERT INTO movie (id, title, synopsis, movie_type, duration, director) VALUES
         (1, 'Hounds, The',
